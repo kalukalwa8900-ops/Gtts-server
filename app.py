@@ -1,9 +1,15 @@
 import os
 import uuid
 from flask import Flask, request, send_file, jsonify
+from flask_cors import CORS
 from gtts import gTTS
 
 app = Flask(__name__)
+CORS(app)
+
+@app.route("/", methods=["GET"])
+def home():
+    return "TTS API is running"
 
 @app.route("/tts", methods=["POST"])
 def tts():
